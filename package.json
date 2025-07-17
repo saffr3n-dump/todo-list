@@ -1,7 +1,10 @@
 {
   "name": "todo-list",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack serve --config webpack.dev.js"
+  },
   "devDependencies": {
     "html-webpack-plugin": "^5.6.3",
     "webpack": "^5.100.2",
