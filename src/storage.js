@@ -1,5 +1,5 @@
-import Project from './project';
-import Todo from './todo';
+import { Project } from './components/project';
+import { Todo } from './components/todo';
 
 class Storage {
   static #TABLE = { PROJECTS: 'projects', TODOS: 'todos' };
