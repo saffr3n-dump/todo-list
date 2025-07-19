@@ -1,5 +1,49 @@
-import { Project } from './components/project';
-import { Todo } from './components/todo';
+class Project {
+  constructor(title, description) {
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.description = description;
+    this.todoIds = [];
+  }
+
+  static default() {
+    return new Project(
+      'Default',
+      'This is a default project that is created automatically, when there ' +
+        'are no other projects yet (e.g., during the first launch). It only ' +
+        'exists for a demonstrative purpose and can be freely removed or ' +
+        'modified.',
+    );
+  }
+}
+
+class Todo {
+  constructor(title, description, dueDate, priority, projectId) {
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.description = description;
+    this.dueDate = new Date(dueDate).toISOString();
+    this.priority = priority;
+    this.complete = false;
+    this.projectId = projectId;
+  }
+
+  static default(projectId) {
+    const tomorrow = Date.now() + 1000 * 60 * 60 * 24;
+    const dueDate = new Date(tomorrow);
+    dueDate.setHours(0, 0, 0, 0);
+
+    return new Todo(
+      'Default',
+      'This is a default todo that is created automatically alongside the ' +
+        'default project it is placed into. It only exists for a ' +
+        'demonstrative purpose and can be freely removed or modified.',
+      dueDate.toISOString(),
+      'Medium',
+      projectId,
+    );
+  }
+}
 
 class Storage {
   static #TABLE = { PROJECTS: 'projects', TODOS: 'todos' };

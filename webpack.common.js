@@ -8,7 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
-  plugins: [new HtmlPlugin({ template: './src/assets/template.html' })],
+  plugins: [new HtmlPlugin({ template: './src/template.html' })],
   module: {
     rules: [{ test: /\.css$/i, use: ['style-loader', 'css-loader'] }],
   },
