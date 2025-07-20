@@ -4,6 +4,7 @@ import navigateTo from './utils/navigate-to';
 import reloadProjectLists from './components/project-lists';
 import storage from './storage';
 import todoPage from './components/todo-page';
+import projectPage from './components/project-page';
 
 const logo = document.querySelector('.logo');
 logo.addEventListener('click', (e) => {
@@ -55,6 +56,18 @@ const newTodoModalCancelBtn = newTodoForm.querySelector(
 );
 newTodoModalCancelBtn.onclick = function () {
   newTodoModal.close();
+};
+
+const newProjectModal = document.querySelector('.new-project');
+const newProjectForm = newProjectModal.querySelector('form');
+newProjectForm.onsubmit = function () {
+  const { title, description } = Object.fromEntries(
+    new FormData(newProjectForm),
+  );
+  const project = storage.createProject(title, description);
+  newProjectForm.reset();
+  reloadProjectLists();
+  navigateTo(projectPage(project.id));
 };
 
 reloadProjectLists();
