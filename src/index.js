@@ -20,19 +20,10 @@ newProjBtn.onclick = function () {
   document.querySelector('.new-project').showModal();
 };
 
-const todoNav = document.querySelector('.nav-todos');
-todoNav.addEventListener('click', (e) => {
-  if (e.target.tagName !== 'A') return;
+const allTodosLink = document.querySelector('.nav-todos a');
+allTodosLink.addEventListener('click', (e) => {
   e.preventDefault();
-  switch (e.target.textContent) {
-    case 'All':
-      navigateTo(allTodosPage());
-      break;
-    case 'Today':
-      break;
-    case 'This Week':
-      break;
-  }
+  navigateTo(allTodosPage());
 });
 
 const newTodoModal = document.querySelector('.new-todo');
