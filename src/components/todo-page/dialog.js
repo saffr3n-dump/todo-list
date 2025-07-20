@@ -120,9 +120,11 @@ export default function (todo) {
           }),
         ],
         onsubmit: function () {
-          const data = Object.fromEntries(new FormData(this));
-          data.complete = !!data.complete;
-          storage.updateTodo(todo.id, data);
+          const { project: projectId, ...rest } = Object.fromEntries(
+            new FormData(this),
+          );
+          rest.complete = !!rest.complete;
+          storage.updateTodo(todo.id, { ...rest, projectId });
           navigateTo(todoPage(todo.id));
         },
       }),

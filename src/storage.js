@@ -109,11 +109,11 @@ class Storage {
     priority && (todo.priority = priority);
     complete != null && (todo.complete = complete);
     if (!projectId) return this.#saveTable(Storage.#TABLE.TODOS, this.todos);
-    const oldProject = this.projects(todo.projectId);
-    const newProject = this.projects(projectId);
+    const oldProject = this.projects[todo.projectId];
+    const newProject = this.projects[projectId];
     todo.projectId = projectId;
-    oldProject.todos = oldProject.todos.filter((id) => id !== todo.id);
-    newProject.todos.push(todo.id);
+    oldProject.todoIds = oldProject.todoIds.filter((id) => id !== todo.id);
+    newProject.todoIds.push(todo.id);
     this.#sync();
   }
 
