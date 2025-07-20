@@ -2,7 +2,7 @@ import storage from '../../storage';
 import createElement from '../../utils/create-element';
 import navigateTo from '../../utils/navigate-to';
 import projectPage from '.';
-import reloadNavProjects from '../nav-projects';
+import reloadProjectsLists from '../project-lists';
 
 export default function (project) {
   return createElement('dialog', {
@@ -55,7 +55,7 @@ export default function (project) {
         onsubmit: function () {
           const data = Object.fromEntries(new FormData(this));
           storage.updateProject(project.id, data);
-          reloadNavProjects();
+          reloadProjectsLists();
           navigateTo(projectPage(project.id));
         },
       }),

@@ -2,7 +2,7 @@ import storage from '../../storage';
 import createElement from '../../utils/create-element';
 import navigateTo from '../../utils/navigate-to';
 import allTodosPage from '../all-todos-page';
-import reloadNavProjects from '../nav-projects';
+import reloadProjectLists from '../project-lists';
 import dialog from './dialog';
 import table from './table';
 
@@ -28,7 +28,7 @@ export default function (id) {
             textContent: 'Delete',
             onclick: function () {
               storage.deleteProject(id);
-              reloadNavProjects();
+              reloadProjectLists();
               navigateTo(allTodosPage());
             },
           }),

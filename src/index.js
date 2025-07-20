@@ -1,13 +1,21 @@
 import './style.css';
 import allTodosPage from './components/all-todos-page';
 import navigateTo from './utils/navigate-to';
-import reloadNavProjects from './components/nav-projects';
+import reloadProjectLists from './components/project-lists';
 
 const logo = document.querySelector('.logo');
 logo.addEventListener('click', (e) => {
   e.preventDefault();
   navigateTo(allTodosPage());
 });
+
+const [newTodoBtn, newProjBtn] = document.querySelectorAll('nav button');
+newTodoBtn.onclick = function () {
+  document.querySelector('.new-todo').showModal();
+};
+newProjBtn.onclick = function () {
+  document.querySelector('.new-project').showModal();
+};
 
 const todoNav = document.querySelector('.nav-todos');
 todoNav.addEventListener('click', (e) => {
@@ -24,5 +32,5 @@ todoNav.addEventListener('click', (e) => {
   }
 });
 
-reloadNavProjects();
+reloadProjectLists();
 navigateTo(allTodosPage());

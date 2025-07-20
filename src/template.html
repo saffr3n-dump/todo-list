@@ -26,5 +26,61 @@
       </nav>
     </aside>
     <main></main>
+
+    <dialog class="new-todo">
+      <h1>New Todo</h1>
+      <form method="dialog">
+        <label for="title">
+          Title
+          <input type="text" name="title" id="title">
+        </label>
+        <label for="description">
+          Description
+          <textarea name="description" id="description"></textarea>
+        </label>
+        <label for="dueDate">
+          Due Date
+          <input type="date" name="dueDate" id="dueDate">
+        </label>
+        <label for="priority">
+          Priority
+          <select name="priority" id="priority">
+            <option value="Low">Low</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="High">High</option>
+          </select>
+        </label>
+        <label for="complete">
+          Complete
+          <input type="checkbox" name="complete" id="complete">
+        </label>
+        <label for="project">
+          Project
+          <select name="project" id="project"></select>
+        </label>
+        <div class="controls">
+          <button type="submit">Submit</button>
+          <button type="button">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="new-project">
+      <h1>New Project</h1>
+      <form method="dialog">
+        <label for="title">
+          Title
+          <input type="text" name="title" id="title">
+        </label>
+        <label for="description">
+          Description
+          <textarea name="description" id="description"></textarea>
+        </label>
+        <div class="controls">
+          <button type="submit">Submit</button>
+          <button type="button">Cancel</button>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>
