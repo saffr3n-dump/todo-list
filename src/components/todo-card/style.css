@@ -1,0 +1,45 @@
+.card {
+  padding: 1rem;
+  max-width: 15rem;
+  border: 1px solid;
+  border-radius: 1rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem 0 #aaa;
+  display: grid;
+  gap: 1rem;
+
+  & p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+  }
+
+  & dl {
+    & div {
+      display: flex;
+      justify-content: space-between;
+
+      & dt {
+        font-weight: bold;
+
+        &::after {
+          content: ':';
+        }
+      }
+
+      & dd {
+        margin: 0;
+      }
+    }
+  }
+
+  & > * {
+    margin: 0;
+  }
+
+  .container:has(&) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

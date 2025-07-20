@@ -31,9 +31,51 @@ main {
   & h1 {
     text-align: center;
   }
+
+  & > div > p {
+    text-align: center;
+  }
 }
 
 nav ul {
   padding: 0;
   list-style: none;
+}
+
+table {
+  margin: 0 auto;
+  border: 1px solid;
+
+  & th,
+  & td {
+    border: 1px solid;
+    padding: 0.25rem;
+  }
+
+  & td {
+    text-align: center;
+  }
+}
+
+.controls {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+dialog {
+  & form {
+    display: grid;
+    gap: 0.5rem;
+
+    & label:not(:has(input[type='checkbox'])) {
+      display: grid;
+    }
+
+    & label:has(input[type='checkbox']) {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
 }
