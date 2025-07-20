@@ -3,6 +3,7 @@ import createElement from '../../utils/create-element';
 import navigateTo from '../../utils/navigate-to';
 import allTodosPage from '../all-todos-page';
 import reloadProjectLists from '../project-lists';
+import todoCard from '../todo-card';
 import dialog from './dialog';
 import table from './table';
 
@@ -36,6 +37,13 @@ export default function (id) {
       }),
       modal,
       createElement('hr', {}),
+      createElement('h2', { textContent: 'Todos' }),
+      createElement('div', {
+        className: 'container',
+        children: Object.values(storage.todos)
+          .filter((todo) => todo.projectId === id)
+          .map((todo) => todoCard(todo)),
+      }),
     ],
   });
 }
