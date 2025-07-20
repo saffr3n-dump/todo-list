@@ -3,6 +3,7 @@ import allTodosPage from './components/all-todos-page';
 import navigateTo from './utils/navigate-to';
 import reloadProjectLists from './components/project-lists';
 import storage from './storage';
+import todoPage from './components/todo-page';
 
 const logo = document.querySelector('.logo');
 logo.addEventListener('click', (e) => {
@@ -36,12 +37,18 @@ todoNav.addEventListener('click', (e) => {
 const newTodoModal = document.querySelector('.new-todo');
 const newTodoForm = newTodoModal.querySelector('form');
 newTodoForm.onsubmit = function () {
-  let { title, description, dueDate, priority, project } = Object.fromEntries(
+  const { title, description, dueDate, priority, project } = Object.fromEntries(
     new FormData(newTodoForm),
   );
-  storage.createTodo(title, description, dueDate, priority, project);
+  const todo = storage.createTodo(
+    title,
+    description,
+    dueDate,
+    priority,
+    project,
+  );
   newTodoForm.reset();
-  navigateTo(allTodosPage());
+  navigateTo(todoPage(todo.id));
 };
 const newTodoModalCancelBtn = newTodoForm.querySelector(
   'button[type="button"]',
