@@ -71,6 +71,13 @@ class Storage {
     this.#saveTable(Storage.#TABLE.PROJECTS, this.projects);
   }
 
+  updateProject(id, { title, description }) {
+    const project = this.projects[id];
+    title && (project.title = title);
+    description && (project.description = description);
+    this.#saveTable(Storage.#TABLE.PROJECTS, this.projects);
+  }
+
   deleteProject(id) {
     this.deleteTodos(...this.projects[id].todoIds);
     delete this.projects[id];
@@ -82,6 +89,29 @@ class Storage {
     const project = this.projects[projectId];
     project.todoIds.push(todo.id);
     this.todos[todo.id] = todo;
+    this.#sync();
+  }
+
+  countTodos() {
+    return Object.keys(this.todos).length;
+  }
+
+  updateTodo(
+    id,
+    { title, description, dueDate, priority, complete, projectId },
+  ) {
+    const todo = this.todos[id];
+    title && (todo.title = title);
+    description && (todo.description = description);
+    dueDate && (todo.dueDate = dueDate);
+    priority && (todo.priority = priority);
+    complete != null && (todo.complete = complete);
+    if (!projectId) return this.#saveTable(Storage.#TABLE.TODOS, this.todos);
+    const oldProject = this.projects(todo.projectId);
+    const newProject = this.projects(projectId);
+    todo.projectId = projectId;
+    oldProject.todos = oldProject.todos.filter((id) => id !== todo.id);
+    newProject.todos.push(todo.id);
     this.#sync();
   }
 
