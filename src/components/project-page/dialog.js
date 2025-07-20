@@ -20,6 +20,7 @@ export default function (project) {
                 name: 'title',
                 id: 'title',
                 value: project.title,
+                required: true,
               }),
             ],
           }),
