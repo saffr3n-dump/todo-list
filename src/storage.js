@@ -69,6 +69,7 @@ class Storage {
     const project = new Project(title, description);
     this.projects[project.id] = project;
     this.#saveTable(Storage.#TABLE.PROJECTS, this.projects);
+    return project;
   }
 
   updateProject(id, { title, description }) {
@@ -90,6 +91,7 @@ class Storage {
     project.todoIds.push(todo.id);
     this.todos[todo.id] = todo;
     this.#sync();
+    return todo;
   }
 
   countTodos() {
