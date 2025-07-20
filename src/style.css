@@ -37,6 +37,18 @@ main {
   }
 }
 
+nav div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  & h2 {
+    margin: 0;
+  }
+}
+
 nav ul {
   padding: 0;
   list-style: none;
